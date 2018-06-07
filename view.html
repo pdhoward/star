@@ -63,7 +63,10 @@
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/" + searchedCharacter, function(data) {
+      // ensure we are referencing correct end point upon cloud deployment
+      var currentURL = window.location.origin;
+
+      $.get(currentURL + "/api/" + searchedCharacter, function(data) {
         console.log(data);
         if (data) {
           $("#stats").show();
